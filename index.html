@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/style/css/main.css"/>
+</head>
+<body>
+    <header class="header"></header>
+    <div class="aside">
+        <div class="selectFilter">
+        <label for="processorFilter">Процесор:</label>
+        <select name="processorFilter" id="processorFilter">
+            <option value="all">Всі</option>
+        </select>
+        <label for="ramFilter">Опиративна пам'ять:</label>
+        <select name="ramFilter" id="ramFilter">
+            <option value="all">Всі</option>
+        </select>
+        <label for="storageFilter">Жорский диск:</label>
+        <select name="storageFilter" id="storageFilter">
+            <option value="all">Всі</option>
+        </select>
+        <label for="displayFilter">Дисплей:</label>
+        <select name="displayFilter" id="displayFilter">
+            <option value="all">Всі</option>
+        </select>
+        <label for="graphicsFilter">Відеокарта:</label>
+        <select name="graphicsFilter" id="graphicsFilter">
+            <option value="all">Всі</option>
+        </select>
+        </div>
+        <div>
+            <label for="priceFilter"></label>
+            <input type="range" id="priceFilter" min="0" max="3000" step="1">
+            <span id="priceValue">0</span>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="goods_container"></div>
+    </main>
+    <footer class="footer"></footer>
+    <script src="./index.js" type="module"></script>
+</body>
+</html>
