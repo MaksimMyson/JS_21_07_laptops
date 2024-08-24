@@ -7,7 +7,37 @@
     <link rel="stylesheet" href="./src/style/css/main.css"/>
 </head>
 <body>
-    <header class="header"></header>
+    <!-- <li><a href="./index.html"><img src="./src/style/img/logo.png" alt="logo"></a></li> -->
+
+    <header class="header">
+        <nav>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./price.html">Price</a></li>
+                    <li><a href="./contacts.html">Contacts</a></li>
+                    <li class="cart-icon">
+                        <a href="#" id="cart-btn"><img src="./src/style/img/cart.png" alt="cart"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <span id="close-cart">&times;</span>
+            <h2>Ваш кошик</h2>
+            <div id="cart-items"></div>
+            <button id="clear-cart">Clear</button>
+        </div>
+    </div>
+    
+ 
+    
+ 
+    
+   
     <div class="aside">
         <div class="selectFilter">
         <label for="processorFilter">Процесор:</label>

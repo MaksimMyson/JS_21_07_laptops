@@ -62,3 +62,88 @@ document.addEventListener("DOMContentLoaded", ()=>{
             
  });
 
+ 
+
+ document.getElementById('cart-btn').addEventListener('click', function() {
+    document.getElementById('cart-modal').style.display = 'block';
+});
+
+document.getElementById('close-cart').addEventListener('click', function() {
+    document.getElementById('cart-modal').style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    if (event.target === document.getElementById('cart-modal')) {
+        document.getElementById('cart-modal').style.display = 'none';
+    }
+});
+
+const cartItems = {};
+
+function addToCart(itemName) {
+    if (cartItems[itemName]) {
+        cartItems[itemName].quantity++;
+    } else {
+        cartItems[itemName] = { quantity: 1 };
+    }
+    renderCart();
+}
+
+function renderCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = '';
+    for (const [name, { quantity }] of Object.entries(cartItems)) {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        const itemName = document.createElement('span');
+        itemName.classList.add('cart-item-name');
+        itemName.textContent = name;
+
+        const itemQuantity = document.createElement('div');
+        itemQuantity.classList.add('cart-item-quantity');
+        itemQuantity.innerHTML = `
+            <button class="decrease" data-name="${name}">-</button>
+            <span>${quantity}</span>
+            <button class="increase" data-name="${name}">+</button>
+        `;
+
+        cartItem.appendChild(itemName);
+        cartItem.appendChild(itemQuantity);
+        cartItemsContainer.appendChild(cartItem);
+    }
+
+    document.querySelectorAll('.increase').forEach(button => {
+        button.addEventListener('click', function() {
+            addToCart(this.getAttribute('data-name'));
+        });
+    });
+
+    document.querySelectorAll('.decrease').forEach(button => {
+        button.addEventListener('click', function() {
+            decreaseItem(this.getAttribute('data-name'));
+        });
+    });
+}
+
+function decreaseItem(itemName) {
+    if (cartItems[itemName].quantity > 1) {
+        cartItems[itemName].quantity--;
+    } else {
+        delete cartItems[itemName];
+    }
+    renderCart();
+}
+
+document.getElementById('clear-cart').addEventListener('click', function() {
+    for (let item in cartItems) {
+        delete cartItems[item];
+    }
+    renderCart();
+});
+
+// Приклад додавання товару в кошик
+addToCart('Товар 1');
+addToCart('Товар 2');
+
+
